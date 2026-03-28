@@ -239,4 +239,4 @@ For a faster smoke test set `n_sim=100` in `adaptive_trial.py`. For publication-
 ## 8. Author
 Jesse Koivu — Pure mathematics PhD, transitioning to data science. This project is part of a data science portfolio. The project demonstrates Stochastic Simulation, Bayesian Modeling and applications to a real world problem.
 
-[LinkedIn] · [GitHub]
+[[LinkedIn](https://www.linkedin.com/in/jesse-koivu-b3b0a72b5/)] · [[GitHub](https://github.com/JesseK37)]
