@@ -35,7 +35,7 @@ The three-layer architecture separates concerns cleanly:
 
 Tumour volume $V(t)$ evolves under the Gompertz SDE:
 
-$$dV(t) = \bigl[\alpha - \beta \ln V(t) - \delta\bigr]\, V(t)\, dt \;+\; \sigma\, V(t)\, dW(t)$$
+$$dV(t) = \bigl[\alpha - \beta \ln V(t) - \delta\bigr] V(t) dt + \sigma V(t) dW(t)$$
 
 where $\alpha$ is the intrinsic proliferation rate, $\beta$ is the Gompertz deceleration coefficient capturing vascular and nutrient limitations, $\delta$ is the drug-induced elimination rate (zero in the control arm), $\sigma$ is the diffusion coefficient encoding biological noise, and $W(t)$ is standard Brownian motion.
 
@@ -74,16 +74,16 @@ At $\delta = 0.009$ the model produces treatment ORR ≈ 44% vs control ORR ≈ 
 
 For each arm $a \in \{\text{treatment, control}\}$, the response rate $\theta_a$ is inferred from the observed responders $y_a$ out of $n_a$ patients:
 
-$$y_a \mid \theta_a \;\sim\; \text{Binomial}(n_a,\, \theta_a)$$
-$$\theta_a \;\sim\; \text{Beta}(\alpha_a,\, \beta_a)$$
+$$y_a \mid \theta_a \sim \text{Binomial}(n_a, \theta_a)$$
+$$\theta_a \sim \text{Beta}(\alpha_a, \beta_a)$$
 
 yielding the conjugate posterior:
 
-$$\theta_a \mid y_a \;\sim\; \text{Beta}\!\bigl(\alpha_a + y_a,\;\; \beta_a + n_a - y_a\bigr)$$
+$$\theta_a \mid y_a \sim \text{Beta}\bigl(\alpha_a + y_a, \beta_a + n_a - y_a\bigr)$$
 
 The treatment effect is $\Delta = \theta_T - \theta_C$. The key decision quantity at each interim look is:
 
-$$p_\text{sup} = P(\theta_T > \theta_C \mid \text{data}) = \int_0^1 F_C(\theta)\, p_T(\theta)\, d\theta$$
+$$p_\text{sup} = P(\theta_T > \theta_C \mid \text{data}) = \int_0^1 F_C(\theta) p_T(\theta) d\theta$$
 
 estimated by Monte Carlo over posterior samples (50,000 draws per evaluation).
 
@@ -105,7 +105,7 @@ The control prior is fixed across all regimes, anchored to the historical contro
 
 **Response-adaptive randomisation.** After each interim look the allocation probability for the next cohort is updated via Thompson sampling:
 
-$$\rho_{k+1} = \text{clip}\!\Bigl(P(\theta_T > \theta_C \mid \text{data}_{1:k}),\; \rho_\min,\; \rho_\max\Bigr)$$
+$$\rho_{k+1} = \text{clip}\Bigl(P(\theta_T > \theta_C \mid \text{data}_{1:k}), \rho_\min, \rho_\max\Bigr)$$
 
 with $[\rho_\min, \rho_\max] = [0.20, 0.80]$. The clip bounds follow the recommendation of Thall and Wathen (2007) and ensure both arms retain sufficient patients for valid inference. Without clipping, a strong early signal would allocate almost all subsequent patients to treatment, destroying the statistical comparison.
 
