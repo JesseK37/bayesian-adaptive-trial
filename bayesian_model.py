@@ -793,8 +793,8 @@ if __name__ == "__main__":
 
     # --- Plots ---
     import matplotlib.pyplot as plt
-    fig1 = plot_posterior_evolution([result], save_path="C:/Programming stuff/Claude_files/stoch_bayes/post_evol.png")
-    fig2 = plot_prior_sensitivity(rows,       save_path="C:/Programming stuff/Claude_files/stoch_bayes/prior_sens.png")
+    fig1 = plot_posterior_evolution([result], save_path=NONE)
+    fig2 = plot_prior_sensitivity(rows,       save_path=NONE)
     plt.show()
     print("\nPlots saved.")
 
@@ -807,8 +807,8 @@ if __name__ == "__main__":
         dq = mcmc_decision_quantities(idata)
         for k, v in dq.items():
             print(f"  {k:<18}: {v}")
-        fig3 = plot_mcmc_trace(idata,       save_path="C:/Programming stuff/Claude_files/stoch_bayes/mcmc_trace.png")
-        fig4 = plot_posterior_delta(idata,  save_path="C:/Programming stuff/Claude_files/stoch_bayes/post_delta.png")
+        fig3 = plot_mcmc_trace(idata,       save_path=NONE)
+        fig4 = plot_posterior_delta(idata,  save_path=NONE)
         plt.show()
     except ImportError:
         print("\nPyMC not found — MCMC path skipped.")

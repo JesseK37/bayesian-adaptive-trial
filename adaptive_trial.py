@@ -708,11 +708,11 @@ if __name__ == "__main__":
     mid_oc = oc_adaptive[2]   # δ=0.005 — the interesting regime
 
     fig1 = plot_oc_surface(oc_adaptive, oc_fixed,
-                           save_path="C:/Programming stuff/Claude_files/stoch_bayes/oc_surf.png")
+                           save_path=NONE) #Image save path here and below.
     fig2 = plot_allocation_drift(mid_oc, n_sample=80,
-                                 save_path="C:/Programming stuff/Claude_files/stoch_bayes/alloc_drift.png")
+                                 save_path=NONE)
     fig3 = plot_sample_size_distribution(mid_oc, oc_fixed[2],
-                                         save_path="C:/Programming stuff/Claude_files/stoch_bayes/samp_size_dist.png")
+                                         save_path=NONE)
     plt.show()
     print("Plots saved.")
     print("\nSmoke test passed.")
