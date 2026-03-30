@@ -39,13 +39,13 @@ $$dV(t) = \bigl[\alpha - \beta \ln V(t) - \delta\bigr] V(t) dt + \sigma V(t) dW(
 
 where $\alpha$ is the intrinsic proliferation rate, $\beta$ is the Gompertz deceleration coefficient capturing vascular and nutrient limitations, $\delta$ is the drug-induced elimination rate (zero in the control arm), $\sigma$ is the diffusion coefficient encoding biological noise, and $W(t)$ is standard Brownian motion.
 
-The multiplicative noise term $\sigma V(t)\, dW(t)$ is the biologically motivated choice: it preserves $V(t) > 0$ for all $t$ and implies proportional variability — a 50 cm³ tumour fluctuates more in absolute terms than a 5 cm³ tumour, but with the same coefficient of variation. This is consistent with the TGI model class validated by Stein et al. (2011) against RECIST clinical data.
+The multiplicative noise term $\sigma V(t) dW(t)$ is the biologically motivated choice: it preserves $V(t) > 0$ for all $t$ and implies proportional variability — a 50 cm³ tumour fluctuates more in absolute terms than a 5 cm³ tumour, but with the same coefficient of variation. This is consistent with the TGI model class validated by Stein et al. (2011) against RECIST clinical data.
 
 **Discretisation.** The Milstein scheme is used in preference to plain Euler–Maruyama. For multiplicative noise $g(V) = \sigma V$ the correction term is $\frac{1}{2}\sigma^2 V\bigl(\Delta W^2 - \Delta t\bigr)$, which improves strong convergence from order $\tfrac{1}{2}$ to order $1$. With step size $\Delta t = 0.5$ days the two schemes agree closely for this parameter regime; Milstein is the default for publication-quality results.
 
 **Baseline heterogeneity.** Patient baseline volumes $V_0$ are drawn from a log-normal distribution with mean 25 cm³ and CV 0.50, reflecting the wide variation in tumour burden at trial entry in an unselected Phase II population.
 
-**RECIST classification.** At the primary assessment time $T_\text{assess} = 84$ days (12 weeks), each patient is classified by percentage change from baseline:
+**RECIST classification.** At the primary assessment time $T_{\text{assess}} = 84$ days (12 weeks), each patient is classified by percentage change from baseline:
 
 | Category | Threshold | Interpretation |
 |---|---|---|
@@ -91,7 +91,7 @@ estimated by Monte Carlo over posterior samples (50,000 draws per evaluation).
 
 **Prior specification.** Three prior regimes encode different states of prior knowledge:
 
-| Regime | $\theta_T$ prior | $\theta_C$ prior | E[$\theta_T$] | ESS |
+| Regime | $\theta_T$ prior | $\theta_C$ prior | E[ $\theta_T$ ] | ESS |
 |---|---|---|---|---|
 | Sceptical | Beta(2, 18) | Beta(3, 17) | 0.10 | 20 |
 | Neutral | Beta(2, 8) | Beta(3, 17) | 0.20 | 10 |
@@ -143,7 +143,7 @@ At the near-null point ($\delta = 0.001$, ORR difference ≈ 1%) the empirical T
 
 The adaptive design's primary benefit over fixed 1:1 is ethical rather than statistical: RAR shifts patients toward the superior arm during the trial.
 
-| $\delta$ | E[N] adaptive | E[N] fixed | E[$N_\text{treat}$] adaptive | E[$N_\text{treat}$] fixed |
+| $\delta$ | E[N] adaptive | E[N] fixed | E[ $N_{\text{treat}}$ ] adaptive | E[ $N_{\text{treat}}$ ] fixed |
 |---|---|---|---|---|
 | 0.005 | 88.1 | 89.5 | ~59 | ~45 |
 | 0.007 | 58.3 | 59.0 | ~47 | ~30 |
