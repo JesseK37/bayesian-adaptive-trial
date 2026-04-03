@@ -225,7 +225,7 @@ For a faster smoke test set `n_sim=100` in `adaptive_trial.py`. For publication-
 
 ## 8. References
 
-1. Stein WD et al. (2011). Tumor regression and growth rates determined in five intramural NCI prostate cancer trials. *J Clin Oncol* 29:2090–2096.
+1. Stein WD et al. (2011). Tumor regression and growth rates determined in five intramural NCI prostate cancer trials. *Clin Cancer Res* 17:907-917.
 2. Claret L et al. (2013). Model-based prediction of phase III overall survival in colorectal cancer. *J Clin Oncol* 31:2198–2204.
 3. Berry SM et al. (2010). *Bayesian Adaptive Methods for Clinical Trials*. CRC Press.
 4. Thall PF, Simon R (1994). Practical Bayesian guidelines for Phase IIB clinical trials. *Biometrics* 50:337–349.
